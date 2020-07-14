@@ -20,6 +20,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,11 +44,13 @@ public class GreetingController {
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
 
+	@CrossOrigin(origins = "*")
 	@GetMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}
 	
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/exportar")
 	public ResponseEntity<byte[]>  exportar(@RequestParam("name")  String name) {	
 		HttpHeaders headers = new HttpHeaders();
@@ -81,7 +84,7 @@ public class GreetingController {
 	
 	}
 
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping(value="/upload") 
 	public String setAdjuntar(
 			@RequestParam("files") MultipartFile[] adjuntos) throws IOException {
