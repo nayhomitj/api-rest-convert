@@ -142,7 +142,7 @@ public class GreetingController {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 		try(HSSFWorkbook workbook = new HSSFWorkbook();) {
-			HSSFSheet sheet = workbook.createSheet("Listado de carnets");
+			HSSFSheet sheet = workbook.createSheet("Listado");
 			ArrayList<String> cabecera = new ArrayList<>();
 			cabecera.add("SKU (Ref)");
 			cabecera.add("SKU-Codigo almacen");
@@ -207,7 +207,7 @@ public class GreetingController {
 			cell = row.createCell(++cellNum);
 			cell.setCellValue(b.get(7));
 			cell = row.createCell(++cellNum);
-			cell.setCellValue("TIENDA>"+b.get(1)+">"+b.get(3)+">"+b.get(5));
+			cell.setCellValue("TIENDA>SUPERMERCADO>"+b.get(1)+">"+b.get(3)+">"+b.get(5));
 			cell = row.createCell(++cellNum);
 			cell.setCellValue(b.get(7));
 			cell = row.createCell(++cellNum);
